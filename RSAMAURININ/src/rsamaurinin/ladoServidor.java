@@ -5,6 +5,7 @@
  */
 package rsamaurinin;
 
+import java.awt.Color;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -49,6 +50,8 @@ public class ladoServidor extends javax.swing.JFrame {
      */
     public ladoServidor() {
         initComponents();
+        
+        this.getContentPane().setBackground(Color.decode("#A7D3A6"));
         r = new Random();
         p = BigInteger.probablePrime(bitlength, r);
         q = BigInteger.probablePrime(bitlength, r);
@@ -106,21 +109,26 @@ public class ladoServidor extends javax.swing.JFrame {
         txtLadoServidorVentana = new javax.swing.JTextArea();
         txtMensajeServer = new javax.swing.JTextField();
         btnEnviarServidor = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtLadoServidorVentana1 = new javax.swing.JTextArea();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
 
         txtLadoServidorVentana.setEditable(false);
-        txtLadoServidorVentana.setBackground(new java.awt.Color(255, 255, 0));
+        txtLadoServidorVentana.setBackground(new java.awt.Color(207, 231, 155));
         txtLadoServidorVentana.setColumns(20);
+        txtLadoServidorVentana.setFont(new java.awt.Font("Verdana", 0, 13)); // NOI18N
         txtLadoServidorVentana.setRows(5);
         txtLadoServidorVentana.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         jScrollPane1.setViewportView(txtLadoServidorVentana);
 
-        txtMensajeServer.setBackground(new java.awt.Color(255, 255, 0));
+        txtMensajeServer.setBackground(new java.awt.Color(207, 231, 155));
+        txtMensajeServer.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
 
+        btnEnviarServidor.setBackground(new java.awt.Color(247, 239, 129));
         btnEnviarServidor.setText("Enviar");
         btnEnviarServidor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,10 +136,19 @@ public class ladoServidor extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("CHAT DEL SERVIDOR");
+        txtLadoServidorVentana1.setEditable(false);
+        txtLadoServidorVentana1.setBackground(new java.awt.Color(207, 231, 155));
+        txtLadoServidorVentana1.setColumns(20);
+        txtLadoServidorVentana1.setFont(new java.awt.Font("Verdana", 0, 13)); // NOI18N
+        txtLadoServidorVentana1.setRows(5);
+        txtLadoServidorVentana1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        jScrollPane2.setViewportView(txtLadoServidorVentana1);
 
-        jLabel2.setText("Escribe tu mensaje aquí");
+        jLabel3.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 18)); // NOI18N
+        jLabel3.setText("CHAT RSA DEL SERVIDOR");
+
+        jLabel4.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 14)); // NOI18N
+        jLabel4.setText("Escribe tu mensaje aquí");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -140,30 +157,37 @@ public class ladoServidor extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtMensajeServer, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE)
+                        .addComponent(txtMensajeServer)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnEnviarServidor))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtMensajeServer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEnviarServidor)
-                    .addComponent(jLabel2)))
+                    .addComponent(jLabel4)))
         );
 
         pack();
@@ -181,15 +205,21 @@ public class ladoServidor extends javax.swing.JFrame {
             //showMessageDialog(null, bytesToString(mensajecliente.getBytes()));
             byte[] arres = encrypt(mensajecliente.getBytes());
             byte[] desencriptado = decrypt(arres, bigIntObtenerD(), bigIntObtenerN());
+            String bytes = bytesToString(arres);
+            String des = new String(desencriptado);
             System.out.println("Bytes enviados: " + bytesToString(arres));
             System.out.println("Decrypted String: " + new String(desencriptado));
             //showMessageDialog(null, Arrays.toString(arres));
             dos.writeUTF(Arrays.toString(arres));
+            String N = bigIntObtenerN().toString();
+            String D = bigIntObtenerD().toString();
             System.out.println("Este es el valor de N: " + bigIntObtenerN().toString());
             System.out.println("Este es el valor de d: " + bigIntObtenerD().toString());
             dosN.writeUTF(bigIntObtenerN().toString());
             dosD.writeUTF(bigIntObtenerD().toString());
-            txtLadoServidorVentana.setText(txtLadoServidorVentana.getText() + "\n Usted: " + mensajecliente);
+            txtLadoServidorVentana.setText(txtLadoServidorVentana.getText() + "\n Usted: " + arres);
+            txtLadoServidorVentana1.setText(txtLadoServidorVentana1.getText() + "\n Mensaje descifrado (Bytes): " + bytes + "\n Mensaje descifrado: " + des + "\n N: " + N + "\n D: "+ D + "\n----------------------------------------------------------------------------------------------------------------------------------- ");
+
 
         } catch (Exception e) {
 
@@ -269,10 +299,14 @@ public class ladoServidor extends javax.swing.JFrame {
                 System.out.println("Recibí este valor de D: " + msjRsaD);
                 System.out.println("Recibí este valor de N: " + msjRsaN);
                 byte[] desencriptado = decrypt(arrenc, rsaD, rsaN);
+                String bytes = bytesToString(arrenc);
+                String des = new String(desencriptado);
                 System.out.println("Desencriptando bytes: " + bytesToString(desencriptado));
                 System.out.println("Cadena desencriptada: " + new String(desencriptado));
                 String msjdesenc = new String(desencriptado);
-                txtLadoServidorVentana.setText(txtLadoServidorVentana.getText() + "\n Cliente: " + msjdesenc);
+                txtLadoServidorVentana.setText(txtLadoServidorVentana.getText() + "\n Cliente: " + msjentrada);
+                txtLadoServidorVentana1.setText(txtLadoServidorVentana1.getText() + "\n Mensaje descifrado (Bytes): " + bytes + "\n Mensaje descifrado: " + des + "\n N: " + msjRsaN + "\n D: "+ msjRsaD + "\n----------------------------------------------------------------------------------------------------------------------------------- ");
+
 
             }
 
@@ -284,10 +318,12 @@ public class ladoServidor extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEnviarServidor;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private static javax.swing.JTextArea txtLadoServidorVentana;
+    private static javax.swing.JTextArea txtLadoServidorVentana1;
     private javax.swing.JTextField txtMensajeServer;
     // End of variables declaration//GEN-END:variables
 }

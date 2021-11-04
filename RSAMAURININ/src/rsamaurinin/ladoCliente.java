@@ -5,6 +5,7 @@
  */
 package rsamaurinin;
 
+import java.awt.Color;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -48,6 +49,9 @@ public class ladoCliente extends javax.swing.JFrame {
      */
     public ladoCliente() {
         initComponents();
+        //Color JFrame
+        this.getContentPane().setBackground(Color.decode("#A7D3A6"));
+
         r = new Random();
         p = BigInteger.probablePrime(bitlength, r);
         q = BigInteger.probablePrime(bitlength, r);
@@ -107,26 +111,31 @@ public class ladoCliente extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnEnviarCliente = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         txtLadoClienteVentana.setEditable(false);
-        txtLadoClienteVentana.setBackground(new java.awt.Color(255, 255, 0));
+        txtLadoClienteVentana.setBackground(new java.awt.Color(207, 231, 155));
         txtLadoClienteVentana.setColumns(20);
+        txtLadoClienteVentana.setFont(new java.awt.Font("Verdana", 0, 13)); // NOI18N
         txtLadoClienteVentana.setRows(5);
-        txtLadoClienteVentana.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        txtLadoClienteVentana.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(212, 198, 133), 3, true));
         jScrollPane1.setViewportView(txtLadoClienteVentana);
 
-        txtMensajeCliente.setBackground(new java.awt.Color(255, 255, 0));
+        txtMensajeCliente.setBackground(new java.awt.Color(207, 231, 155));
+        txtMensajeCliente.setFont(new java.awt.Font("Verdana", 0, 11)); // NOI18N
         txtMensajeCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMensajeClienteActionPerformed(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("CHAT DEL CLIENTE");
+        jLabel1.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 18)); // NOI18N
+        jLabel1.setText("CHAT RSA DEL CLIENTE");
 
+        btnEnviarCliente.setBackground(new java.awt.Color(247, 239, 129));
         btnEnviarCliente.setText("Enviar");
         btnEnviarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,7 +143,16 @@ public class ladoCliente extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 14)); // NOI18N
         jLabel2.setText("Escribe tu mensaje aquí");
+
+        jTextArea1.setEditable(false);
+        jTextArea1.setBackground(new java.awt.Color(207, 231, 155));
+        jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Verdana", 0, 13)); // NOI18N
+        jTextArea1.setRows(5);
+        jTextArea1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(212, 198, 133), 3));
+        jScrollPane2.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -146,13 +164,17 @@ public class ladoCliente extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtMensajeCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
+                        .addComponent(txtMensajeCliente)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnEnviarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -161,7 +183,9 @@ public class ladoCliente extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtMensajeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -181,15 +205,20 @@ public class ladoCliente extends javax.swing.JFrame {
             //showMessageDialog(null, bytesToString(mensajeserver.getBytes()));
             byte[] arres = encrypt(mensajeserver.getBytes());
             byte[] desencriptado = decrypt(arres, bigIntObtenerD(), bigIntObtenerN());
+            String bytes = bytesToString(arres);
+            String des = new String(desencriptado);
             System.out.println("Bytes enviados: " + bytesToString(arres));
             System.out.println("Decrypted String: " + new String(desencriptado));
             //showMessageDialog(null, Arrays.toString(arres));
             dos.writeUTF(Arrays.toString(arres));
+            String N = bigIntObtenerN().toString();
+            String D = bigIntObtenerD().toString();
             System.out.println("Este es el valor de N: " + bigIntObtenerN().toString());
             System.out.println("Este es el valor de d: " + bigIntObtenerD().toString());
             dosN.writeUTF(bigIntObtenerN().toString());
             dosD.writeUTF(bigIntObtenerD().toString());
-            txtLadoClienteVentana.setText(txtLadoClienteVentana.getText() + "\n Usted: " + mensajeserver);
+            txtLadoClienteVentana.setText(txtLadoClienteVentana.getText() + "\n Usted: " + arres);
+            jTextArea1.setText(jTextArea1.getText() + "\n Mensaje descifrado (Bytes): " + bytes + "\n Mensaje descifrado: " + des + "\n N: " + N + "\n D: "+ D + "\n----------------------------------------------------------------------------------------------------------------------------------- ");
 
         } catch (Exception e) {
 
@@ -271,6 +300,8 @@ public class ladoCliente extends javax.swing.JFrame {
                 System.out.println("Recibí este valor de D: " + msjRsaD);
                 System.out.println("Recibí este valor de N: " + msjRsaN);
                 byte[] desencriptado = decrypt(arrenc, rsaD, rsaN);
+                String bytes = bytesToString(arrenc);
+                String des = new String(desencriptado);
                 System.out.println("Desencriptando bytes: " + bytesToString(desencriptado));
                 System.out.println("Cadena desencriptada: " + new String(desencriptado));
                 
@@ -278,7 +309,9 @@ public class ladoCliente extends javax.swing.JFrame {
                 // byte[] arrdesencriptado = ld.decrypt(arrenc);
                 //encriptarMensaje desm = new encriptarMensaje(msjentrada);
                 //String mensajedesc = desm.desencriptamelo(bdes);
-                txtLadoClienteVentana.setText(txtLadoClienteVentana.getText() + "\n Servidor: " + msjdesenc);
+                txtLadoClienteVentana.setText(txtLadoClienteVentana.getText() + "\n Servidor: " + msjentrada);
+                jTextArea1.setText(msjRsaD+ jTextArea1.getText() + "\n Mensaje descifrado (Bytes): " + bytes + "\n Mensaje descifrado: " + des + "\n N: " + msjRsaN + "\n D: " + "\n----------------------------------------------------------------------------------------------------------------------------------- ");
+
             }
         } catch (Exception e) {
 
@@ -289,6 +322,8 @@ public class ladoCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private static javax.swing.JTextArea jTextArea1;
     private static javax.swing.JTextArea txtLadoClienteVentana;
     private javax.swing.JTextField txtMensajeCliente;
     // End of variables declaration//GEN-END:variables
